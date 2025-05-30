@@ -66,14 +66,14 @@ if venue == "Click":
         st.session_state.row_index = 0
 
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2= st.columns([1, 1])
 
     with col1:
         if st.button("⬅️ Previous"):
             if st.session_state.row_index > 0:
                 st.session_state.row_index -= 1
 
-    with col3:
+    with col2:
         if st.button("Next ➡️"):
             if st.session_state.row_index < len(dfg) - 1:
                 st.session_state.row_index += 1
