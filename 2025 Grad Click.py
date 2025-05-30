@@ -13,14 +13,11 @@ dfg.columns.values[4] = "ROW"
 dfg.columns.values[5] = "SEAT NUMBER"
 dfg.columns.values[11] = "PRONOUNCE"
 # Display the DataFrame in Streamlit
-st.title("2025 RMHS Grad Clicker")
+st.title("🚀 2025 RMHS Grad Clicker")
 
-
-event = "Graduation"
-if event == "Graduation":
-    venue_options = ("In PAC", "On Turf", "Click","Data")
-
-venue = st.radio("Select Venue", venue_options,horizontal=True )
+venue_options = ("In PAC", "On Turf", "Click","Data")
+venue = "Click"
+venue = st.radio("Select Venue", venue_options,horizontal=True,)
 
 dfg["Full Name"] = dfg["Last Name"].astype(str) + ", " + dfg["First Name"].astype(str)
 
@@ -65,18 +62,8 @@ if venue == "Click":
     if "row_index" not in st.session_state:
         st.session_state.row_index = 0
 
+    
 
-    col1, col2= st.columns([1, 1])
-
-    with col1:
-        if st.button("⬅️ Previous"):
-            if st.session_state.row_index > 0:
-                st.session_state.row_index -= 1
-
-    with col2:
-        if st.button("Next ➡️"):
-            if st.session_state.row_index < len(dfg) - 1:
-                st.session_state.row_index += 1
 
     row = dfg.iloc[st.session_state.row_index]
     side = row["SIDE"]
@@ -96,15 +83,26 @@ if venue == "Click":
     st.subheader(pronounce)
     st.title(honor)
     st.text(f"Side: {side}  Row: {rown} Seat {seat}")
+    
+col1, col2= st.columns([1, 1])
+with col1:
+    if st.button("⬅️ Previous"):
+        if st.session_state.row_index > 0:
+            st.session_state.row_index -= 1
+
+with col2:
+    if st.button("Next ➡️"):
+        if st.session_state.row_index < len(dfg) - 1:
+            st.session_state.row_index += 1
 
 
+st.text(f"")
+st.text(f"")
+st.text(f"")
+st.text(f"")
+st.text(f"")
+st.text(f"")
+st.text(f"")
+st.text(f"")
 
-st.text(f"")
-st.text(f"")
-st.text(f"")
-st.text(f"")
-st.text(f"")
-st.text(f"")
-st.text(f"")
-st.text(f"")
 st.text("v05292515:18")
